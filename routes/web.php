@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,8 @@ Route::middleware(['auth', 'role:admin'])
     ->name('admin.')
     ->group(function () {
         Route::get('/', fn() => 'Admin area works')->name('dashboard');
+
+        Route::resource('services', ServiceController::class)->except('show');
     });
 
 Route::middleware(['auth', 'role:staff'])
@@ -30,5 +33,6 @@ Route::middleware(['auth', 'role:staff'])
     ->group(function () {
         Route::get('/', fn() => 'Staff area works')->name('dashboard');
     });
+
 
 require __DIR__ . '/auth.php';
