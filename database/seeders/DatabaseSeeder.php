@@ -20,17 +20,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'Staff Member',
-            'email' => 'staff@booking.test',
-            'role' => UserRole::Staff,
-        ]);
-
-        User::factory()->create([
             'name' => 'Customer',
             'email' => 'customer@booking.test',
             'role' => UserRole::Customer,
         ]);
 
         $this->call(ServiceSeeder::class);
+        $this->call(StaffSeeder::class);
     }
 }
