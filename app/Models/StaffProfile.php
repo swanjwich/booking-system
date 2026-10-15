@@ -44,6 +44,11 @@ class StaffProfile extends Model
 
     protected function name(): Attribute
     {
-        return Attribute::get(fn (): string => $this->user->name);
+        return Attribute::get(fn(): string => $this->user->name);
+    }
+
+    public function appointments(): HasMany
+    {
+        return $this->hasMany(Appointment::class);
     }
 }
