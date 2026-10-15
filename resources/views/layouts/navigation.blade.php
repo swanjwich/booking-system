@@ -20,6 +20,11 @@
                         Services
                     </x-nav-link>
                     @endif
+                    @if (auth()->user()->isCustomer())
+                    <x-nav-link :href="route('bookings.create')" :active="request()->routeIs('bookings.*')">
+                        Book
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 
